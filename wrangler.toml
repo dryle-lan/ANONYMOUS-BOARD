@@ -20,5 +20,6 @@ id         = "0fbb936ba9f54bc985b30883111dbc75"    # replace after: wrangler kv:
 preview_id = "70c2a31fa2524276b2dd7dd5ce96983f"     # replace after: wrangler kv:namespace create RATELIMIT --preview
 
 # ── Environment Variables ──────────────────────────────────────────────────────
+
 [vars]
-ALLOWED_ORIGIN = "https://f37f9cfb.confessional.pages.dev"  # replace with your Pages URL
+ALLOWED_ORIGIN = "https://bbae7146.confessional.pages.dev"
