@@ -1,0 +1,29 @@
+name       = "confessional-api"
+main       = "worker/index.js"
+compatibility_date = "2024-09-23"
+
+# ── Pages ──────────────────────────────────────────────────────────────────────
+# Static assets are served from /public via Cloudflare Pages.
+# The Worker handles all /api/* routes via a Pages Functions proxy or
+# a standalone Worker bound to the Pages project.
+
+# ── D1 Database ────────────────────────────────────────────────────────────────
+[[d1_databases]]
+binding      = "DB"
+database_name = "confessional-db"
+database_id  = "YOUR_D1_DATABASE_ID"   # replace after: wrangler d1 create confessional-db
+
+# ── KV Namespace (rate limiting) ───────────────────────────────────────────────
+[[kv_namespaces]]
+binding    = "RATELIMIT"
+id         = "YOUR_KV_NAMESPACE_ID"    # replace after: wrangler kv:namespace create RATELIMIT
+preview_id = "YOUR_KV_PREVIEW_ID"     # replace after: wrangler kv:namespace create RATELIMIT --preview
+
+# ── Environment Variables ──────────────────────────────────────────────────────
+[vars]
+ALLOWED_ORIGIN = "https://YOUR_PAGES_DOMAIN.pages.dev"  # replace with your Pages URL
+
+# ── Routes ─────────────────────────────────────────────────────────────────────
+[[routes]]
+pattern = "YOUR_PAGES_DOMAIN.pages.dev/api/*"
+zone_name = ""   # leave blank for pages.dev subdomains
